@@ -3,3 +3,12 @@
 def hello ():
     return "Hello!"
 
+
+# task 2:
+def greet(name):
+    return f"Hello, {name}!"
+
+greet("Tracy")
+
+# task 3:
+
