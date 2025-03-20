@@ -40,7 +40,39 @@ def calc(val1, val2, operation="multiply"):
         return "You can't multiply those values!"
     
 
-    # Task 4
+ # Task 4
 
-    def data_type_conversion():
+
+
+
+
+# task 5
+def grade(*args):
+    try:
         
+        for x in args: #loop to validate each argument
+            if not isinstance(x, (int, float)):
+                 return "Invalid data was provided."
+            
+            
+        num_grade = sum(args) # sum of the numbers
+        total_num = len(args) # count of the numbers
+
+        avg = num_grade / total_num  # will calculate the average
+
+
+        if avg >= 90:
+            grade_result = "A"
+        elif avg >= 80:
+            grade_result = "B"
+        elif avg >= 70:
+            grade_result = "C"
+        elif avg >= 60:
+            grade_result = "D"
+        else:
+            grade_result = "F"
+    
+        return grade_result
+
+    except Exception:
+        return "Invalid data was provided."
