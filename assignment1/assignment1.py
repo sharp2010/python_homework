@@ -76,3 +76,39 @@ def grade(*args):
 
     except Exception:
         return "Invalid data was provided."
+    
+# task 6:
+def repeat(string, count):
+    result = ""
+
+    for x in range(count):
+        result += string
+
+    return result
+
+# task 7:
+def student_scores(option, **kwargs):
+    if option == "best": # check option for best
+        best_student = max(kwargs, key=kwargs.get)  # finds the student with best score using max with the score as key
+        return best_student
+    
+    elif option == "mean":
+        if kwargs:
+            ave_score = sum(kwargs.values())/ len(kwargs)
+            return ave_score
+        
+# task 8
+def titleize(str):
+    little_words = ["a", "on", "an", "the", "of", "and", "is", "in"]
+       
+    words = str.split() # this will split the string into words
+
+    for i, word in enumerate(words): # iterate through the words 
+        if i == 0 or i == len(words) - 1: # first and last words capitalized
+            words[i] = word.capitalize()
+        elif word.lower() not in little_words: # will capitalized if not a little word
+            words[i] = word.capitalize()
+        else:
+            words[i] = word.lower() # keeps little words lower case
+
+    return " ".join(words)
