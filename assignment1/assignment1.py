@@ -112,3 +112,15 @@ def titleize(str):
             words[i] = word.lower() # keeps little words lower case
 
     return " ".join(words)
+
+# task 9
+def hangman(secret, guess):
+    result = []  # start an empty list to store the results
+
+    for letter in secret: # will loop through the letters in secret
+        if letter in guess:
+            result.append(letter) # if correct guess, it's append it to result
+        else:
+            result.append('_') # if wrong _ will be appended
+
+    return ''.join(result)  # returns the list as a string
