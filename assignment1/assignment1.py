@@ -143,6 +143,9 @@ def pig_latin(sentence):
                 if letter in vowels:
                     pig_latin_word = word[i:] +word[:i] + "ay"
                     break
+                
+            else:
+                 pig_latin_word = word + "ay"
 
         pig_latin_words.append(pig_latin_word)  # puts word into the list
 
