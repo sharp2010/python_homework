@@ -41,6 +41,19 @@ def calc(val1, val2, operation="multiply"):
     
 
  # Task 4
+def data_type_conversion(value, data_type):
+    try:
+
+        if data_type == "int":
+            return int(value)
+        elif data_type == "float":
+            return float(value)
+        elif data_type == "str":
+            return str(value)    
+        else:
+            raise ValueError("Invalid data type requested")
+    except (ValueError, TypeError) as e:  #will capture the exception that is raised and assign it to a variable
+        return f"You can't convert {value} into a {data_type}."
 
 
 
@@ -141,11 +154,8 @@ def pig_latin(sentence):
         else: # if word starts with a consonant this loop will look for the first vowel
             for i, letter in enumerate(word):
                 if letter in vowels:
-                    pig_latin_word = word[i:] +word[:i] + "ay"
-                    break
-                
-            else:
-                 pig_latin_word = word + "ay"
+                    pig_latin_word = word[i:] + word[:i] + "ay"      
+                    break # will stop the loop when first vowel found 
 
         pig_latin_words.append(pig_latin_word)  # puts word into the list
 
