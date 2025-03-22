@@ -1,1 +1,162 @@
 # Write your code here.
+# task 1:
+def hello ():
+    return "Hello!"
+
+
+# task 2:
+def greet(name):
+    return f"Hello, {name}!"
+
+greet("Tracy")
+
+# task 3:
+def calc(val1, val2, operation="multiply"):
+    try:    
+        match operation:
+            case "add":
+                return val1 + val2
+            case "subtract":
+                return val1 - val2
+            case "multiply":
+                return val1 * val2
+            case "divide":
+                if val2 == 0:
+                    raise ZeroDivisionError  # raise will trigger an exception
+                return val1 / val2
+            case "modulo":
+                return val1 % val2
+            case "int_divide":
+                if val2 == 0:
+                    raise ZeroDivisionError 
+                return val1 // val2 # will round down
+            case "power":
+                return val1 ** val2 # will raise number to a power
+            case _:
+                return "Invalid operation"
+    except ZeroDivisionError: # except will tell the program what to do if an error occurs
+        return "You can't divide by 0!"
+    except TypeError:
+        return "You can't multiply those values!"
+    
+
+ # Task 4
+def data_type_conversion(value, data_type):
+    try:
+
+        if data_type == "int":
+            return int(value)
+        elif data_type == "float":
+            return float(value)
+        elif data_type == "str":
+            return str(value)    
+        else:
+            raise ValueError("Invalid data type requested")
+    except (ValueError, TypeError) as e:  #will capture the exception that is raised and assign it to a variable
+        return f"You can't convert {value} into a {data_type}."
+
+
+
+
+
+# task 5
+def grade(*args):
+    try:
+        
+        for x in args: #loop to validate each argument
+            if not isinstance(x, (int, float)):
+                 return "Invalid data was provided."
+            
+            
+        num_grade = sum(args) # sum of the numbers
+        total_num = len(args) # count of the numbers
+
+        avg = num_grade / total_num  # will calculate the average
+
+
+        if avg >= 90:
+            grade_result = "A"
+        elif avg >= 80:
+            grade_result = "B"
+        elif avg >= 70:
+            grade_result = "C"
+        elif avg >= 60:
+            grade_result = "D"
+        else:
+            grade_result = "F"
+    
+        return grade_result
+
+    except Exception:
+        return "Invalid data was provided."
+    
+# task 6:
+def repeat(string, count):
+    result = ""
+
+    for x in range(count):
+        result += string
+
+    return result
+
+# task 7:
+def student_scores(option, **kwargs):
+    if option == "best": # check option for best
+        best_student = max(kwargs, key=kwargs.get)  # finds the student with best score using max with the score as key
+        return best_student
+    
+    elif option == "mean":
+        if kwargs:
+            ave_score = sum(kwargs.values())/ len(kwargs)
+            return ave_score
+        
+# task 8
+def titleize(str):
+    little_words = ["a", "on", "an", "the", "of", "and", "is", "in"]
+       
+    words = str.split() # this will split the string into words
+
+    for i, word in enumerate(words): # iterate through the words 
+        if i == 0 or i == len(words) - 1: # first and last words capitalized
+            words[i] = word.capitalize()
+        elif word.lower() not in little_words: # will capitalized if not a little word
+            words[i] = word.capitalize()
+        else:
+            words[i] = word.lower() # keeps little words lower case
+
+    return " ".join(words)
+
+# task 9
+def hangman(secret, guess):
+    result = []  # start an empty list to store the results
+
+    for letter in secret: # will loop through the letters in secret
+        if letter in guess:
+            result.append(letter) # if correct guess, it's append it to result
+        else:
+            result.append('_') # if wrong _ will be appended
+
+    return ''.join(result)  # returns the list as a string
+
+
+# task 10
+def pig_latin(sentence):
+    vowels = "aeiou"
+    words = sentence.split() # will split the sentence into individual words
+
+    pig_latin_words = [] # will store converted words
+
+    for word in words:
+        if word[:2] == "qu":
+            pig_latin_word = word[2:] + "quay"
+        elif word[0] in vowels:  # for words that start with vowel
+            pig_latin_word = word + "ay"
+        else: # if word starts with a consonant this loop will look for the first vowel
+            for i, letter in enumerate(word):
+                if letter in vowels:
+                    pig_latin_word = word[i:] + word[:i] + "ay"      
+                    break # will stop the loop when first vowel found 
+
+        pig_latin_words.append(pig_latin_word)  # puts word into the list
+
+    return " ".join(pig_latin_words)  # puts words into a sentence
